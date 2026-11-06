@@ -1,0 +1,21 @@
+titulo: "El ejército que perdió una guerra contra pájaros"
+resaltar: [perdió, emús, pájaros, ganaron]
+
+escenas:
+  - texto: "Australia declaró la guerra a unos pájaros... y perdió."
+    imagen: "a giant angry emu standing victorious on a hill in the Australian outback, tiny soldiers in the background, dramatic sunset"
+
+  - texto: "Año 1932. Unos veinte mil emús arrasan los cultivos de los granjeros del oeste de Australia."
+    imagen: "thousands of emus invading a wheat field in Western Australia in 1932, worried farmers watching, dusty golden light"
+
+  - texto: "El gobierno envía soldados con ametralladoras. Parecía una misión fácil."
+    imagen: "1930s Australian soldiers with old machine guns on a truck, confident faces, outback road"
+
+  - texto: "Pero los emús se separaban en grupos pequeños, corrían a cincuenta por hora y aguantaban varios disparos sin caer."
+    imagen: "emus running at full speed in all directions across the outback, soldiers chasing them in a bouncing truck, funny chaotic scene"
+
+  - texto: "Tras gastar miles de balas, el ejército se retiró."
+    imagen: "tired 1930s soldiers walking away in defeat, empty ammunition boxes, emus watching them from behind a fence"
+
+  - texto: "La prensa lo llamó la Guerra de los Emús. Y los emús ganaron. Sígueme para más historia."
+    imagen: "a proud emu wearing a small military medal, posing like a war hero, epic spotlight, dark background"

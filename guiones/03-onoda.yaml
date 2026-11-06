@@ -1,0 +1,21 @@
+titulo: "El soldado que siguió luchando 29 años después de la guerra"
+resaltar: [29, años, guerra, terminado]
+
+escenas:
+  - texto: "Este soldado siguió luchando en la Segunda Guerra Mundial... hasta 1974."
+    imagen: "a lone Japanese soldier in a worn WWII uniform hiding in a dense tropical jungle, rays of light, mysterious mood"
+
+  - texto: "Se llamaba Hiroo Onoda. En 1944, Japón lo envía a una isla de Filipinas con una orden: no rendirse jamás."
+    imagen: "a young Japanese officer in 1944 receiving orders from his commander, map of a Philippine island on the table"
+
+  - texto: "En 1945 la guerra termina. Pero Onoda no se lo cree. Piensa que los avisos son trampas del enemigo."
+    imagen: "a soldier in the jungle reading leaflets dropped from the sky, suspicious face, tearing them up"
+
+  - texto: "Durante décadas sigue escondido en la selva, convencido de que la guerra continúa."
+    imagen: "the same soldier older, with a beard, still in a patched uniform, living in a jungle camp, rain falling"
+
+  - texto: "En 1974 tuvo que ir su antiguo comandante en persona a decirle que la guerra había terminado."
+    imagen: "an old Japanese commander in civilian clothes reading an order to a thin soldier saluting in the jungle, emotional moment"
+
+  - texto: "Solo entonces entregó su espada. 29 años después. Sígueme para más historia."
+    imagen: "a soldier handing over his katana sword with both hands, bowing, golden sunset light through the jungle"

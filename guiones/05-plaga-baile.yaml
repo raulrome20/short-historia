@@ -1,0 +1,21 @@
+titulo: "La epidemia de baile de 1518"
+resaltar: [bailar, días, cientos, nadie]
+
+escenas:
+  - texto: "En 1518, cientos de personas empezaron a bailar... y no podían parar."
+    imagen: "a crowd of medieval people dancing frantically in a town square, exhausted faces, eerie atmosphere"
+
+  - texto: "Estrasburgo, julio. Una mujer, Frau Troffea, sale a la calle y empieza a bailar sin música."
+    imagen: "a woman in 16th century clothing dancing alone in a narrow medieval street of Strasbourg, neighbors watching from windows"
+
+  - texto: "Baila durante días. Pronto se le unen decenas de vecinos. Después, cientos."
+    imagen: "more and more people in 16th century clothes joining a strange dance in the street, half-timbered houses"
+
+  - texto: "Las autoridades creen que la solución es... dejarles bailar. Contratan músicos y montan un escenario."
+    imagen: "a wooden stage in a medieval square with musicians playing drums and pipes while people keep dancing"
+
+  - texto: "Mala idea. El baile duró semanas, y algunas crónicas hablan de personas que murieron de agotamiento."
+    imagen: "dancers collapsing from exhaustion in a medieval square at dusk, worried officials watching, somber"
+
+  - texto: "Aún hoy nadie sabe con seguridad qué pasó. Sígueme para más historia."
+    imagen: "an old manuscript about the dancing plague lying on a desk under candlelight, mysterious shadows"
