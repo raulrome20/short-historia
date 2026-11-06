@@ -1,0 +1,39 @@
+name: Generar short
+
+# Fase 1: se lanza a mano desde la pestaña "Actions" de GitHub.
+on:
+  workflow_dispatch:
+    inputs:
+      guion:
+        description: "Guion a convertir en vídeo"
+        required: true
+        default: "guiones/rey-semlas.yaml"
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar ffmpeg y fuentes
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+      - name: Instalar librerías
+        run: pip install -r requirements.txt
+
+      - name: Generar el vídeo
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GUION: ${{ inputs.guion }}
+        run: python src/generar_short.py "$GUION"
+
+      - name: Guardar el vídeo para descargarlo
+        uses: actions/upload-artifact@v4
+        with:
+          name: short
+          path: salida/*.mp4

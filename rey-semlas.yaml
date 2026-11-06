@@ -1,0 +1,28 @@
+# Guion de un short. Copia este archivo para crear uno nuevo.
+# - texto: lo que dice la voz en esa escena (1-2 frases cortas).
+# - imagen: descripción de la imagen, MEJOR EN INGLÉS (los modelos la entienden mejor).
+#   El estilo de config.yaml se añade solo.
+# - imagen_archivo (opcional): usa una imagen tuya en vez de generarla, p. ej. "imagenes/rey.jpg".
+
+titulo: "El rey que murió por comer demasiados dulces"
+# musica: "musica/epica.mp3"   # opcional; si no, se elige una al azar de la carpeta musica/
+resaltar: [rey, dulces, catorce, murió, morir]
+
+escenas:
+  - texto: "Este rey murió por comer demasiados dulces."
+    imagen: "a chubby 18th century Swedish king with a golden crown staring greedily at a huge pile of cream buns, dramatic red background"
+
+  - texto: "Suecia, doce de febrero de 1771. El rey Adolfo Federico se sienta a cenar."
+    imagen: "royal Swedish palace dining hall at night in 1771, candles, long table, the king sitting down at the head of the table"
+
+  - texto: "Langosta, caviar, chucrut, arenques ahumados... y mucho champán."
+    imagen: "lavish 18th century royal feast on a table, lobster, caviar, sauerkraut, smoked herring, bottles of champagne, warm candlelight"
+
+  - texto: "Y de postre, semlas: bollos rellenos de nata y mazapán. Se comió catorce."
+    imagen: "the king happily eating a tower of fourteen Swedish semla buns filled with whipped cream, crumbs everywhere, funny expression"
+
+  - texto: "Horas después, el rey murió por una indigestión."
+    imagen: "a golden crown lying on the floor of a dark empty royal bedroom, single candle, somber mood"
+
+  - texto: "Y pasó a la historia como el rey que comió hasta morir. Sígueme para más historia."
+    imagen: "a single Swedish semla bun on a silver plate wearing a tiny golden crown, spotlight, dark background, epic and funny"

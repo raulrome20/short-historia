@@ -1,0 +1,27 @@
+# Configuración general de los shorts. Cambia aquí el estilo de todo el canal.
+
+imagenes:
+  # Estilo que se añade a TODAS las imágenes (mantiene la coherencia visual).
+  # Ejemplos: "3D Pixar style render", "anime style, Studio Ghibli inspired", "oil painting"
+  estilo: "3D animated movie style, Pixar-like, cinematic lighting, vibrant colors, highly detailed, vertical composition"
+  space: "black-forest-labs/FLUX.1-schnell"   # modelo gratuito en Hugging Face
+  api_name: "/infer"
+  ancho: 768
+  alto: 1344
+  pasos: 4
+
+voz:
+  # Voces en español de España: es-ES-AlvaroNeural (hombre), es-ES-ElviraNeural (mujer)
+  voz: "es-ES-AlvaroNeural"
+  velocidad: "+12%"     # un poco rápida, típico de shorts
+
+subtitulos:
+  tam: 92
+  altura: 0.68          # posición vertical (0 = arriba, 1 = abajo)
+  mayusculas: true
+  borde: 12
+  color_activa: [255, 214, 64]   # palabra que se está diciendo (amarillo)
+  color_clave: [255, 120, 80]    # palabras de la lista "resaltar" del guion
+
+musica:
+  volumen: 0.12         # 0.12 = música bajita bajo la voz
