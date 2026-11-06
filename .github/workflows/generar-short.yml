@@ -1,13 +1,27 @@
 name: Generar short
 
-# Fase 1: se lanza a mano desde la pestaña "Actions" de GitHub.
+# Fase 2:
+# - Todos los días se genera solo el siguiente guion pendiente de la carpeta guiones/
+#   (por orden de nombre: 01-..., 02-..., etc.) y después se mueve a guiones/hechos/.
+# - También se puede lanzar a mano desde la pestaña "Actions" > "Run workflow".
 on:
+  schedule:
+    # Hora en UTC: 6:17 UTC = 7:17 en Madrid en invierno (8:17 en verano).
+    # GitHub puede retrasarlo unos minutos en horas de mucho uso.
+    - cron: "17 6 * * *"
   workflow_dispatch:
     inputs:
       guion:
-        description: "Guion a convertir en vídeo"
-        required: true
-        default: "guiones/rey-semlas.yaml"
+        description: "Guion concreto (déjalo vacío para usar el siguiente pendiente)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write   # necesario para mover el guion a guiones/hechos/
+
+concurrency:
+  group: generar-short
+  cancel-in-progress: false
 
 jobs:
   generar:
@@ -16,24 +30,64 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Elegir guion
+        id: elegir
+        env:
+          GUION_MANUAL: ${{ inputs.guion }}
+        run: |
+          if [ -n "$GUION_MANUAL" ]; then
+            GUION="$GUION_MANUAL"
+          else
+            GUION=$(ls guiones/*.yaml 2>/dev/null | sort | head -n 1)
+          fi
+          if [ -z "$GUION" ] || [ ! -f "$GUION" ]; then
+            echo "::warning::No hay guiones pendientes en la carpeta guiones/. Sube más guiones."
+            echo "hay=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "Guion elegido: $GUION"
+            echo "hay=si" >> "$GITHUB_OUTPUT"
+            echo "guion=$GUION" >> "$GITHUB_OUTPUT"
+            echo "nombre=$(basename "$GUION" .yaml)" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.elegir.outputs.hay == 'si'
         with:
           python-version: "3.12"
 
       - name: Instalar ffmpeg y fuentes
+        if: steps.elegir.outputs.hay == 'si'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
 
       - name: Instalar librerías
+        if: steps.elegir.outputs.hay == 'si'
         run: pip install -r requirements.txt
 
       - name: Generar el vídeo
+        if: steps.elegir.outputs.hay == 'si'
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          GUION: ${{ inputs.guion }}
+          GUION: ${{ steps.elegir.outputs.guion }}
         run: python src/generar_short.py "$GUION"
 
       - name: Guardar el vídeo para descargarlo
+        if: steps.elegir.outputs.hay == 'si'
         uses: actions/upload-artifact@v4
         with:
-          name: short
+          name: short-${{ steps.elegir.outputs.nombre }}
           path: salida/*.mp4
+
+      - name: Mover el guion a guiones/hechos
+        if: steps.elegir.outputs.hay == 'si'
+        env:
+          GUION: ${{ steps.elegir.outputs.guion }}
+        run: |
+          # Solo se mueven los guiones pendientes (los que están directamente en guiones/)
+          if [ "$(dirname "$GUION")" = "guiones" ]; then
+            mkdir -p guiones/hechos
+            git mv "$GUION" guiones/hechos/
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Short generado: $(basename "$GUION")"
+            git push
+          fi
